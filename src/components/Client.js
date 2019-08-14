@@ -2,6 +2,8 @@ import React, { Component } from "react";
 // import ReactTable from 'react-table'
 // import 'react-table/react-table.css'
 import '../style/clients.css'
+var moment = require('moment');
+
 
 class Client extends Component {
   
@@ -19,7 +21,7 @@ class Client extends Component {
         <td>{client.owner}</td>
         <td>{client.emailType}</td>
         <td>{client.sold}</td>
-        <td>{client.firstContact}</td>
+        <td>{moment(client.firstContact).format('L')}</td>
       </tr>
     )
   }

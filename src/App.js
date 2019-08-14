@@ -12,7 +12,8 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
-      clients:[]
+      clients:[],
+      input:''
     }
   }
 
@@ -48,6 +49,17 @@ class App extends Component {
       clients: data.data
     })
   }
+
+  searchName = (event) => {
+    let searchValue = event.target.value
+    let inputName = event.target.name
+    this.setState({ [inputName]: searchValue })
+  }
+  searchCountry = (event) => {
+    let searchValue = event.target.value
+    let inputCountry = event.target.country
+    this.setState({ [inputCountry]: searchValue })
+  }
   
   render (){
     return (
@@ -57,7 +69,7 @@ class App extends Component {
           <span className="actions"><Link style={{ textDecoration: 'none' }} to="/actions">Actions</Link> </span>
           <span className="analytics"><Link style={{ textDecoration: 'none' }} to="/analytics">Analytics</Link> </span>
         </div>
-        <Route exact path="/clients" render={() =>  <Clients clients={this.state.clients} />} />
+        <Route exact path="/clients" render={() =>  <Clients clients={this.state.clients} input={this.state.input} searchName={this.searchName}  />} />
         <Route exact path="/actions" render={() => <Actions newClient={this.newClient} clients={this.state.clients} />} />
         <Route exact path="/analytics" render={() => <Analytics />} />
       </Router>

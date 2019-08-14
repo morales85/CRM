@@ -17,4 +17,10 @@ table {
   tr:nth-child(even) {
     background-color: #dddddd;
   }
+  input{
+    outline: none;
+    border: 0;
+    border-bottom: 1px solid black;
+    height: 2vh;
+  }
 
